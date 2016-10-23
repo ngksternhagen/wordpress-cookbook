@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: wordpress
+# Cookbook Name:: testrail
 # Recipe:: default
 #
 # Copyright 2009-2010, Opscode, Inc.
@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-include_recipe "wordpress::apache"
+include_recipe "testrail::apache"
