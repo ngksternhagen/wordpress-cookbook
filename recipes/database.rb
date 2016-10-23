@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: wordpress
+# Cookbook Name:: testrail
 # Recipe:: database
 # Author:: Lucas Hansen (<lucash@opscode.com>)
 # Author:: Julian C. Dunn (<jdunn@getchef.com>)
@@ -30,12 +30,12 @@ mysql2_chef_gem 'default' do
 end
 
 ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
-::Chef::Recipe.send(:include, Wordpress::Helpers)
+::Chef::Recipe.send(:include, Testrail::Helpers)
 
-node.set_unless['wordpress']['db']['pass'] = secure_password
+node.set_unless['testrail']['db']['pass'] = secure_password
 node.save unless Chef::Config[:solo]
 
-db = node['wordpress']['db']
+db = node['testrail']['db']
 
 if is_local_host? db['host']
 
