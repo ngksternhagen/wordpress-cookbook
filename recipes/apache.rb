@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: wordpress
+# Cookbook Name:: testrail
 # Recipe:: apache
 #
 # Copyright 2009-2010, Opscode, Inc.
@@ -26,31 +26,31 @@ unless platform? "windows"
   include_recipe "apache2::mod_php5"
 end
 
-include_recipe "wordpress::app"
+include_recipe "testrail::app"
 
 if platform?('windows')
 
   include_recipe 'iis::remove_default_site'
 
-  iis_pool 'WordpressPool' do
+  iis_pool 'TestrailPool' do
     no_managed_code true
     action :add
   end
 
-  iis_site 'Wordpress' do
+  iis_site 'Testrail' do
     protocol :http
     port 80
-    path node['wordpress']['dir']
-    application_pool 'WordpressPool'
+    path node['testrail']['dir']
+    application_pool 'TestrailPool'
     action [:add,:start]
   end
 else
-  web_app "wordpress" do
-    template "wordpress.conf.erb"
-    docroot node['wordpress']['dir']
-    server_name node['wordpress']['server_name']
-    server_aliases node['wordpress']['server_aliases']
-    server_port node['wordpress']['server_port']
+  web_app "testrail" do
+    template "testrail.conf.erb"
+    docroot node['testrail']['dir']
+    server_name node['testrail']['server_name']
+    server_aliases node['testrail']['server_aliases']
+    server_port node['testrail']['server_port']
     enable true
   end
 end
