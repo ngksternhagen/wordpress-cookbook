@@ -81,19 +81,3 @@ attribute "Testrail/server_aliases",
   :display_name => "Testrail Server Aliases",
   :description => "Testrail Server Aliases",
   :default => "FQDN"
-
-attribute "Testrail/languages/lang",
-  :display_name => "Testrail WPLANG configulation value",
-  :description => "Testrail WPLANG configulation value",
-  :default => ""
-
-attribute "Testrail/languages/version",
-  :display_name => "Version of Testrail translation file",
-  :description => "Version of Testrail translation file",
-  :default => ""
-
-attribute "Testrail/languages/projects",
-  :display_name => "Testrail translation projects",
-  :description => "Testrail translation projects",
-  :type => "array",
-  :default => ["main", "admin", "admin/network", "cc"]
