@@ -1,15 +1,15 @@
-[![Build Status](https://travis-ci.org/brint/wordpress-cookbook.svg?branch=master)](https://travis-ci.org/brint/wordpress-cookbook)
-[![Dependency Status](https://gemnasium.com/brint/wordpress-cookbook.svg)](https://gemnasium.com/brint/wordpress-cookbook)
+[![Build Status](https://travis-ci.org/brint/testrail-cookbook.svg?branch=master)](https://travis-ci.org/brint/testrail-cookbook)
+[![Dependency Status](https://gemnasium.com/brint/testrail-cookbook.svg)](https://gemnasium.com/brint/testrail-cookbook)
 
 Description
 ===========
 
-The Chef WordPress cookbook installs and configures WordPress according to the instructions at http://codex.wordpress.org/Installing_WordPress.
+The Chef Testrail cookbook installs and configures Testrail according to the instructions at TODO
 
 Description
 ===========
 
-This cookbook does not set up the WordPress blog. You will need to do this manually by going to http://hostname/wp-admin/install.php (this URL may be different if you change the attribute values).
+TODO
 
 Requirements
 ============
@@ -17,9 +17,8 @@ Requirements
 Platform
 --------
 
-* Ubuntu 12.04, 14.04
-* RHEL/CentOS 5, 6
-* Windows
+* RHEL/CentOS 6
+* others in development
 
 Cookbooks
 ---------
@@ -28,51 +27,47 @@ Cookbooks
 * mysql_chef_gem
 * php
 * apache2
-* iis
-* windows
 * openssl (uses library to generate secure passwords)
 * selinux (used to disable selinux for MySQL on RHEL-based systems)
 
 Attributes
 ==========
 
-### WordPress
+### Testrail
 
-* `node['wordpress']['version']` - Version of WordPress to download. Use 'latest' to download most recent version.
-* `node['wordpress']['parent_dir']` - Parent directory to where WordPress will be extracted. (Windows Only)
-* `node['wordpress']['dir']` - Location to place WordPress files.
-* `node['wordpress']['db']['root_password']` - Root password for MySQL (added for support with community cookbook version 6+)
-* `node['wordpress']['db']['instance_name']` - Name of the MySQL instance to use with MySQL (community cookbook version 6+)
-* `node['wordpress']['db']['name']` - Name of the WordPress MySQL database.
-* `node['wordpress']['db']['user']` - Name of the WordPress MySQL user.
-* `node['wordpress']['db']['pass']` - Password of the WordPress MySQL user. By default, generated using openssl cookbook.
-* `node['wordpress']['db']['prefix']` - Prefix of all MySQL tables created by WordPress.
-* `node['wordpress']['db']['host']` - Host of the WordPress MySQL database.
-* `node['wordpress']['db']['port']` - Port of the WordPress MySQL database.
-* `node['wordpress']['db']['charset']` - [Character set](http://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) of the WordPress MySQL database tables. Defaults to 'utf8'.
-* `node['wordpress']['db']['collate']` - [Collation](http://dev.mysql.com/doc/refman/5.7/en/charset-collation-effect.html) of the WordPress MySQL database tables.
-* `node['wordpress']['db']['mysql_version']` - Version of MySQL to install (for supporting community cookbook version 6+)
+* `node['testrail']['version']` - Version of Testrail to download. Use 'latest' to download most recent version.
+* `node['testrail']['parent_dir']` - Parent directory to where Testrail will be extracted. (Windows Only)
+* `node['testrail']['dir']` - Location to place Testrail files.
+* `node['testrail']['db']['root_password']` - Root password for MySQL (added for support with community cookbook version 6+)
+* `node['testrail']['db']['instance_name']` - Name of the MySQL instance to use with MySQL (community cookbook version 6+)
+* `node['testrail']['db']['name']` - Name of the Testrail MySQL database.
+* `node['testrail']['db']['user']` - Name of the Testrail MySQL user.
+* `node['testrail']['db']['pass']` - Password of the Testrail MySQL user. By default, generated using openssl cookbook.
+* `node['testrail']['db']['prefix']` - Prefix of all MySQL tables created by Testrail.
+* `node['testrail']['db']['host']` - Host of the Testrail MySQL database.
+* `node['testrail']['db']['port']` - Port of the Testrail MySQL database.
+* `node['testrail']['db']['charset']` - [Character set](http://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) of the Testrail MySQL database tables. Defaults to 'utf8'.
+* `node['testrail']['db']['collate']` - [Collation](http://dev.mysql.com/doc/refman/5.7/en/charset-collation-effect.html) of the Testrail MySQL database tables.
+* `node['testrail']['db']['mysql_version']` - Version of MySQL to install (for supporting community cookbook version 6+)
 
-* `node['wordpress']['allow_multisite']` - Enable [multisite](http://codex.wordpress.org/Create_A_Network) features (default: false).
-* `node['wordpress']['wp_config_options']` - A hash of options to define in wp_config.php, output as key value pairs into a PHP constant e.g. `define( '<%= @key %>', <%= @value %> );`. Note: for values you will need to add single quotes around text but omit them for booleans and numbers. (default: {}).
-* `node['wordpress']['config_perms']` - Permissions to set for a site's wp-config.php.
-* `node['wordpress']['server_aliases']` - Aliases to use when setting up Virtual Host with Nginx or Apache
-* `node['wordpress']['server_port']` - Port to use when setting up the Virtual Host with Nginx or Apache
+* TODO others from testrail documentation
+* `node['testrail']['server_aliases']` - Aliases to use when setting up Virtual Host with Nginx or Apache
+* `node['testrail']['server_port']` - Port to use when setting up the Virtual Host with Nginx or Apache
 
-* `node['wordpress']['install']['user']` - Install user used for WordPress file permissions and the PHP-FPM user (if applicable)
-* `node['wordpress']['install']['group']` - Install group used for WordPress file permissions and the PHP-FPM group (if necessary)
+* `node['testrail']['install']['user']` - Install user used for Testrail file permissions and the PHP-FPM user (if applicable)
+* `node['testrail']['install']['group']` - Install group used for Testrail file permissions and the PHP-FPM group (if necessary)
 
-* `node['wordpress']['parent_dir']` - Parent directory of where WordPress will be installed. This is used in the Windows installation to determine where the .zip will be downloaded to.
-* `node['wordpress']['dir']` - Path where WordPress should be installed
-* `node['wordpress']['url']` - URL to the zip or tarball installer of WordPress
-* `node['wordpress']['server_name']` - Hostname used for setting up the Virtual Host configuration for your WordPress site
+* `node['testrail']['parent_dir']` - Parent directory of where Testrail will be installed. This will be used by Windows.
+* `node['testrail']['dir']` - Path where Testrail should be installed
+* `node['testrail']['url']` - URL to the zip or tarball installer of Testrail
+* `node['testrail']['server_name']` - Hostname used for setting up the Virtual Host configuration for your Testrail site
 
-* `node['wordpress']['php_options']` - Additional PHP settings for the installation.
+* `node['testrail']['php_options']` - Additional PHP settings for the installation.
 
 Usage
 =====
 
-Add the "wordpress" recipe to your node's run list or role, or include the recipe in another cookbook.
+Add the "testrail" recipe to your node's run list or role, or include the recipe in another cookbook.
 
 License and Author
 ==================
@@ -82,8 +77,10 @@ License and Author
 * Author:: Seth Chisamore (schisamo@opscode.com)
 * Author:: Lucas Hansen (lucash@opscode.com)
 * Author:: Julian C. Dunn (jdunn@getchef.com)
+* Author:: NGK Sternhagen (sternhagen@protonmail.ch)
 
 Copyright:: 2010-2013, Chef Software, Inc.
+Copyright:: 2016, NGK Sternhagen
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
