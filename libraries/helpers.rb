@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: wordpress
+# Cookbook Name:: testrail
 # Library:: helpers
 # Author:: Yvo van Doorn <yvo@getchef.com>
 # Author:: Julian C. Dunn <jdunn@getchef.com>
@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-module Wordpress
+module Testrail
   module Helpers
     def is_local_host?(host)
       if host == 'localhost' || host == '127.0.0.1' || host == '::1'
