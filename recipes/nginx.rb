@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: wordpress
+# Cookbook Name:: testrail
 # Recipe:: nginx
 #
 # Copyright 2009-2010, Opscode, Inc.
@@ -21,16 +21,16 @@ node.set_unless['php-fpm']['pools'] = []
 
 include_recipe "php-fpm"
 
-php_fpm_pool "wordpress" do
+php_fpm_pool "testrail" do
   listen "127.0.0.1:9001"
-  user node['wordpress']['install']['user']
-  group node['wordpress']['install']['group']
+  user node['testrail']['install']['user']
+  group node['testrail']['install']['group']
   if node['platform'] == 'ubuntu' and node['platform_version'] == '10.04'
     process_manager 'dynamic'
   end
-  listen_owner node['wordpress']['install']['user']
-  listen_group node['wordpress']['install']['group']
-  php_options node['wordpress']['php_options']
+  listen_owner node['testrail']['install']['user']
+  listen_group node['testrail']['install']['group']
+  php_options node['testrail']['php_options']
   start_servers 5
 end
 
@@ -39,15 +39,15 @@ include_recipe "php::module_mysql"
 node.set_unless['nginx']['default_site_enabled'] = false
 include_recipe "nginx"
 
-include_recipe "wordpress::app"
+include_recipe "testrail::app"
 
-template "#{node['nginx']['dir']}/sites-enabled/wordpress.conf" do
+template "#{node['nginx']['dir']}/sites-enabled/testrail.conf" do
   source "nginx.conf.erb"
   variables(
-    :docroot          => node['wordpress']['dir'],
-    :server_name      => node['wordpress']['server_name'],
-    :server_aliases   => node['wordpress']['server_aliases'],
-    :server_port      => node['wordpress']['server_port']
+    :docroot          => node['testrail']['dir'],
+    :server_name      => node['testrail']['server_name'],
+    :server_aliases   => node['testrail']['server_aliases'],
+    :server_port      => node['testrail']['server_port']
   )
   action :create
 end
