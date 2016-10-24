@@ -1,4 +1,4 @@
-@test "check for wordpress install" {
-  export welcome="WordPress.*[Ii]nstallation"
-  wget -O - http://localhost/wp-admin/install.php | egrep "${welcome}"
+@test "check for testrail install" {
+  export welcome=""
+  wget -O - http://localhost/index.php?/setup/install | egrep "${welcome}"
 }
